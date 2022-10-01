@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ApiDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="bus">
+    <Key>
+      <PropertyRef Name="bus_id" />
+    </Key>
+    <Property Name="bus_id" Type="int" Nullable="false" />
+    <Property Name="bus_time" Type="time" Precision="7" Nullable="false" />
+    <Property Name="bus_route" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="common">
+    <Key>
+      <PropertyRef Name="bus_id" />
+    </Key>
+    <Property Name="bus_id" Type="int" Nullable="false" />
+    <Property Name="c_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="condoctor">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="int" Nullable="false" />
+    <Property Name="c_name" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="c_age" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ApiDatabaseModelStoreContainer">
+    <EntitySet Name="bus" EntityType="Self.bus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="common" EntityType="Self.common" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="condoctor" EntityType="Self.condoctor" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

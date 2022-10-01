@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ApiDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bus">
+          <Key>
+            <PropertyRef Name="bus_id" />
+          </Key>
+          <Property Name="bus_id" Type="int" Nullable="false" />
+          <Property Name="bus_time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="bus_route" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="common">
+          <Key>
+            <PropertyRef Name="bus_id" />
+          </Key>
+          <Property Name="bus_id" Type="int" Nullable="false" />
+          <Property Name="c_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="condoctor">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="int" Nullable="false" />
+          <Property Name="c_name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="c_age" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ApiDatabaseModelStoreContainer">
+          <EntitySet Name="bus" EntityType="Self.bus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="common" EntityType="Self.common" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="condoctor" EntityType="Self.condoctor" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ApiDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="bus">
+          <Key>
+            <PropertyRef Name="bus_id" />
+          </Key>
+          <Property Name="bus_id" Type="Int32" Nullable="false" />
+          <Property Name="bus_time" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="bus_route" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="common">
+          <Key>
+            <PropertyRef Name="bus_id" />
+          </Key>
+          <Property Name="bus_id" Type="Int32" Nullable="false" />
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="condoctor">
+          <Key>
+            <PropertyRef Name="c_id" />
+          </Key>
+          <Property Name="c_id" Type="Int32" Nullable="false" />
+          <Property Name="c_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="c_age" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ApiDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="buses" EntityType="Self.bus" />
+          <EntitySet Name="commons" EntityType="Self.common" />
+          <EntitySet Name="condoctors" EntityType="Self.condoctor" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ApiDatabaseModelStoreContainer" CdmEntityContainer="ApiDatabaseEntities">
+          <EntitySetMapping Name="buses">
+            <EntityTypeMapping TypeName="ApiDatabaseModel.bus">
+              <MappingFragment StoreEntitySet="bus">
+                <ScalarProperty Name="bus_id" ColumnName="bus_id" />
+                <ScalarProperty Name="bus_time" ColumnName="bus_time" />
+                <ScalarProperty Name="bus_route" ColumnName="bus_route" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="commons">
+            <EntityTypeMapping TypeName="ApiDatabaseModel.common">
+              <MappingFragment StoreEntitySet="common">
+                <ScalarProperty Name="bus_id" ColumnName="bus_id" />
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="condoctors">
+            <EntityTypeMapping TypeName="ApiDatabaseModel.condoctor">
+              <MappingFragment StoreEntitySet="condoctor">
+                <ScalarProperty Name="c_id" ColumnName="c_id" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+                <ScalarProperty Name="c_age" ColumnName="c_age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

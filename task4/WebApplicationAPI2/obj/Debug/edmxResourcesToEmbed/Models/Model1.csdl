@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ApiDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="bus">
+    <Key>
+      <PropertyRef Name="bus_id" />
+    </Key>
+    <Property Name="bus_id" Type="Int32" Nullable="false" />
+    <Property Name="bus_time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="bus_route" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="common">
+    <Key>
+      <PropertyRef Name="bus_id" />
+    </Key>
+    <Property Name="bus_id" Type="Int32" Nullable="false" />
+    <Property Name="c_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="condoctor">
+    <Key>
+      <PropertyRef Name="c_id" />
+    </Key>
+    <Property Name="c_id" Type="Int32" Nullable="false" />
+    <Property Name="c_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="c_age" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ApiDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="buses" EntityType="Self.bus" />
+    <EntitySet Name="commons" EntityType="Self.common" />
+    <EntitySet Name="condoctors" EntityType="Self.condoctor" />
+  </EntityContainer>
+</Schema>
